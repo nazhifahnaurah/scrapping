@@ -1,0 +1,3855 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://byrushan.com/projects/sf/1-1/normal-tables.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="https://remunerasidosen.unila.ac.id/assets/images/logo_bkd.png">
+        <title>Manajemen BKD V2</title>
+        <link href="Manajemen%20BKD%20V2_files/animate.css" rel="stylesheet">
+        <link href="Manajemen%20BKD%20V2_files/material-design-iconic-font.css" rel="stylesheet">
+        <link href="Manajemen%20BKD%20V2_files/font-awesome.css" rel="stylesheet">
+    
+        <link href="Manajemen%20BKD%20V2_files/jquery_002.css" rel="stylesheet">
+        <link href="Manajemen%20BKD%20V2_files/jquery.css" rel="stylesheet">
+        
+        <link href="Manajemen%20BKD%20V2_files/app.css" rel="stylesheet">
+        <link href="Manajemen%20BKD%20V2_files/my-style.css" rel="stylesheet">
+        <link href="Manajemen%20BKD%20V2_files/sweetalert.css" rel="stylesheet">
+
+
+
+
+
+<!--         <link href="https://remunerasidosen.unila.ac.id/assets/css/demo.css" rel="stylesheet"> -->
+
+        <style type="text/css">
+ 
+#loading-full-wrapper {
+    z-index: 1001;
+    position: fixed;
+    margin-top: -62px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-color: #009688!important;
+    color: white;
+}
+#loading-content-wrapper {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-color: #fff!important;
+    color: white;
+}
+        </style>
+    </head>
+
+        
+
+    <body>
+
+        <!--| LOADING BAR BODY |-->
+        <div id="loading-full-wrapper" style="display: none;" align="center">
+            <img style="margin-top: 15%" src="Manajemen%20BKD%20V2_files/oval.svg" width="50px">
+            <br>
+            <br>
+            <div style="font-size: 16px; font-family: Arial">Memuat laman..</div>
+        </div>
+
+
+
+        <!--| TOP HEADER |-->
+            <header id="header" class="clearfix affix-top" data-spy="affix" data-offset-top="65">
+      <ul class="header-inner">
+        <!-- Logo -->
+        <li class="logo">
+          <a href="https://remunerasidosen.unila.ac.id/"><img src="Manajemen%20BKD%20V2_files/logo_bkd_landscape.png" alt="" height="45px"></a>
+          <div id="menu-trigger"><i class="zmdi zmdi-menu"></i></div>
+        </li>
+        <!-- Settings -->
+        <li class="pull-right dropdown hidden-xs">
+          <a href="#" data-toggle="dropdown" aria-expanded="false">
+            <i class="zmdi zmdi-settings"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a id="btn-show_modal_ubah_password" style="cursor: pointer;">Ubah Password</a></li>
+            <li><a href="https://remunerasidosen.unila.ac.id/index.php/welcome/do_logout">Logout</a></li>
+          </ul>
+        </li>
+                <form id="FormSiji" name="form-reload" method="post" action="https://remunerasidosen.unila.ac.id/index.php/home/reload" enctype="multipart/form-data">
+          <li class="pull-right hidden-xs">
+              <div class="row" style="padding: 10px;font-size: 14px">
+                  <div class="col-md-12">
+                     <input type="submit" value="Reload" class="btn bg-deeporange">
+                  </div>
+              </div>
+          </li>
+          <li class="pull-right hidden-xs">
+              <div class="row" style="padding: 10px;font-size: 14px">
+                  <input type="hidden" name="origin_url" value="home">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select class="form-control" name="tahun_akademik">
+                        <option disabled="disabled">Silahkan Pilih Tahun Akademik</option>
+                        <option value="2021">2020-2021</option><option value="2020" selected="selected">2019-2020</option><option value="2019">2018-2019</option><option value="2018">2017-2018</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select class="form-control" name="semester">
+                        <option disabled="disabled">Silahkan Pilih Semester</option>
+                        <option value="3">Ganjil Rencana</option><option value="1">Ganjil Laporan</option><option value="2">Genap Rencana</option><option value="4" selected="selected">Genap Laporan</option>                      </select>
+                    </div>
+                  </div>
+
+                  
+              </div>
+          </li>
+
+
+          </form>
+        <li class="pull-left hidden-xs">
+          <h2 id="nav-title" class="bg-teal" style="padding: 5px; color:white">kinerja pendidikan</h2><h2>
+        </h2></li>
+        <li class="pull-left hidden-xs">
+          <h3 id="progress-status" class="bg-orange" style="padding: 5px; color: white; margin-left: 10px; display: none;">Loading..</h3><h3>
+        </h3></li>
+        </ul>
+      </header>    
+        <aside id="sidebar" class="mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+            
+            <!--| SIDEBAR MENU |-->
+                  <!--| MAIN MENU |-->
+      <style type="text/css">
+        .side-menu span{
+          color: white !important;
+        }
+        .side-menu i{
+          color: white !important;
+        }
+        .side-menu li a{
+          color: white !important;
+        }
+      </style>
+      <ul class="side-menu">
+          <li class="sm-sub sms-profile">
+              <a class="clearfix" href="#">
+                  <span class="f-11">
+                      <span class="d-block" style="font-size: 12px">
+                        Dr. Agung Abadi Kiswandono, S.Si., M.Sc.                      </span>
+                      <small>
+                        0005077009                      </small>
+                  </span>
+              </a>
+          </li>
+          		  <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#home/Beranda">
+                  <i class="zmdi zmdi-home"></i>
+                  <span>Beranda</span>
+              </a>
+          </li>
+
+          <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#home/data_diri">
+                  <i class="zmdi zmdi-assignment-account"></i>
+                  <span>Data Diri</span>
+              </a>
+          </li>
+          <li class="sm-sub toggled">
+              <a href="#">
+                  <i class="zmdi zmdi-help"></i>
+                  <span>Helpdesk</span>
+                  </a><ul style="display: block;"><a href="#">
+                      </a><li><a href="#">
+                          </a><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_helpdesk/faq">
+                              <i class="zmdi zmdi-sort-amount-desc"></i>
+                              <span>FAQ</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_helpdesk/ask">
+                              <i class="zmdi zmdi-email"></i>
+                              <span>Kirim Pertanyaan 
+                                <span id="ask-status" class="label label-danger" style="display: none;"></span>
+                              </span>
+                          </a>
+                      </li>
+                  </ul>
+              
+          </li>
+           <li class="sm-sub">
+              <a href="#">
+                  <i class="zmdi zmdi-download" style="color: green"></i>
+                  <span>Download</span>
+                  </a><ul><a href="#">
+                      			</a><li><a href="#">
+                        </a><a target="_blank" href="https://remunerasidosen.unila.ac.id/petunjuk_input_genap_19_20.pdf">
+                              <i class="zmdi zmdi-book"></i>
+                              <span>Petunujuk Pengisian</span>
+                        </a>
+                      </li>
+						
+						<li>
+												<a target="_blank" href="https://remunerasidosen.unila.ac.id/panduan_bkd_2020.pdf">
+                              <i class="zmdi zmdi-book"></i>
+                              <span>Panduan BKD 2020</span>
+                        </a>
+						<a target="_blank" href="https://remunerasidosen.unila.ac.id/panduan_remun_genap_laporan_19_20.pdf">
+                              <i class="zmdi zmdi-book"></i>
+                              <span>Panduan SMT Genap 19-20</span>
+                        </a>
+						<a target="_blank" href="https://remunerasidosen.unila.ac.id/panduan_skinkronisasi_sikep.pdf">
+                              <i class="zmdi zmdi-book"></i>
+                              <span>Panduan Sinkronisasi SIKEP</span>
+                        </a>
+						<a target="_blank" href="https://remunerasidosen.unila.ac.id/petunjuk_input_insentif_tambahan.pdf">
+                              <i class="zmdi zmdi-book"></i>
+                              <span>Panduan Entry Insentif Tambahan</span>
+                        </a>
+                      </li>
+					                    </ul>
+              
+          </li>
+		  <li class="sm-sub">
+              <a href="#">
+                  <i class="zmdi zmdi-assignment-o"></i>
+                  <span>History</span>
+                  </a><ul><a href="#">
+                      </a><li><a href="#"></a><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_history/History_Jabatan_Fungsional">Jabatan Fungsional</a></li>
+                      <li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_history/History_Jabatan_Struktural">Jabatan Struktural</a></li>
+                      <li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_history/History_Golongan">Golongan</a></li>
+                      						<li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_history/History_Absensi">Absensi</a></li>
+                                        </ul>
+              
+          </li>
+                     <li class="sm-sub toggled">
+              <a href="#">
+                  <i class="zmdi zmdi-graduation-cap"></i>
+                  <span>Kinerja Dikjar</span>
+                  </a><ul style="display: block;"><a href="#">
+                      </a><li><a href="#"></a><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_pendidikan/1">Bagian 1</a></li>
+                      <li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_pendidikan/2">Bagian 2</a></li>
+                      							<li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_pendidikan_fk/1">Khusus FK</a></li>
+							                  </ul>
+              
+          </li>
+           <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_penelitian/1">
+                  <i class="zmdi zmdi-globe"></i>
+                  <span>Kinerja Penelitian</span>
+              </a>
+          </li>
+           <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_pengabdian/1">
+                  <i class="zmdi zmdi-device-hub"></i>
+                  <span>Kinerja Pengabdian</span>
+              </a>
+          </li> 
+          <li class="sm-sub">
+              <a href="#">
+                  <i class="zmdi zmdi-chart"></i>
+                  <span>Kinerja Penunjang</span>
+                  </a><ul><a href="#">
+                      </a><li><a href="#"></a><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_penunjang/1">Bagian 1</a></li>
+                      <li><a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/kinerja_penunjang/2">Bagian 2</a></li>
+					  				  </ul>
+              
+          </li>
+          		  <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#c_kinerja/insentif_tambahan/1">
+                  <i class="zmdi zmdi-money"></i>
+                  <span>Insentif Tambahan</span>
+              </a>
+          </li>
+			          <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#home/Kesimpulan_BKD">
+                  <i class="zmdi zmdi-assignment"></i>
+                  <span>Kesimpulan BKD</span>
+              </a>
+          </li>
+			             <li>
+              <a class="wb_ajax-url_trigger" href="https://remunerasidosen.unila.ac.id/index.php/home#home/Remunerasi">
+                  <i class="zmdi zmdi-card-giftcard"></i>
+                  <span>Remunerasi</span>
+              </a>
+          </li> 
+		           <li>
+              <a href="https://remunerasidosen.unila.ac.id/index.php/welcome/do_logout">
+                  <i class="zmdi zmdi-power"></i>
+                  <span>Logout</span>
+              </a>
+          </li>
+      </ul>
+
+        </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 439px; display: block; height: 597px; max-height: 823px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 439px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position:absolute;" oncontextmenu="return false;"><div class="mCSB_dragger_bar"></div></div><div class="mCSB_draggerRail"></div></div></div></aside>
+
+
+                <!-- Javascript Libraries -->
+        <script src="Manajemen%20BKD%20V2_files/jquery_002.js"></script>
+        <script src="Manajemen%20BKD%20V2_files/bootstrap.js"></script>
+        <script src="Manajemen%20BKD%20V2_files/jquery.js"></script>
+        <script src="Manajemen%20BKD%20V2_files/bootstrap-growl.js"></script>     
+        <script src="Manajemen%20BKD%20V2_files/functions.js"></script>
+        <script src="Manajemen%20BKD%20V2_files/sweetalert-dev.js"></script>
+        <script src="Manajemen%20BKD%20V2_files/my-scripts.js"></script>
+            
+
+            <div id="loading-content-wrapper" style="display: none;" align="center">
+                <img style="margin-top: 15%;margin-left: 20%" src="Manajemen%20BKD%20V2_files/loader.gif" width="50px">
+                <br>
+                <br>
+                <div style="margin-left: 20%; color: gray;font-size: 14px; font-family: Arial">Memuat konten..</div>
+            </div>
+        <section id="content"><link href="Manajemen%20BKD%20V2_files/my-datatable.css" rel="stylesheet">
+
+<script src="Manajemen%20BKD%20V2_files/bootstrap-datepicker.js"></script>
+<script src="Manajemen%20BKD%20V2_files/jquery_004.js"></script>
+
+
+
+
+<div class="container" style="padding:20px; width: 100%">
+
+  
+  <div class="row">
+    <div class="col-md-2 bg-green" style="padding: 8px; font-size: 18px; color: white">
+      SKS :  3.13    </div>
+    <div class="col-md-2 bg-indigo" style="padding: 8px; font-size: 18px; color: white; margin-left: 10px; ">
+      SKSR : 12.7    </div>
+  </div>
+  <br>
+
+    
+    <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A0.</strong> Studi Terbimbing          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">3.6</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 110px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Pertemuan: activate to sort column ascending">Jumlah Pertemuan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah Mhs: activate to sort column ascending">Jumlah Mhs</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah SKS: activate to sort column ascending">Jumlah SKS</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 52px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Kimia Dalam Kehidupan Kelas Kim S-1 (a.n Rani Fitria NPM.1517011128)</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                                
+                <td>S1</td>
+                <td>16</td>
+                <td>1</td>
+                <td>6</td>
+  
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>3.6                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Studi Terbimbing" hash_item="dc1a1995a43e6e8f1ccabf04d6b80b0a" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 1 of 1 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_0_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A1.</strong> Memberi Kuliah          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">3</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">3.8</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_1_length"><label><select name="DataTables_Table_1_length" aria-controls="DataTables_Table_1" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_1"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 90px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 65px;" aria-label="Periode Semester: activate to sort column ascending">Periode Semester</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 87px;" aria-label="Jenis Perkuliahan: activate to sort column ascending">Jenis Perkuliahan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah SKS: activate to sort column ascending">Jumlah SKS</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Pertemuan: activate to sort column ascending">Jumlah Pertemuan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah Mhs: activate to sort column ascending">Jumlah Mhs</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 52px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Kewirausahaan Kimia Kelas B</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                                <td>Semester Reguler</td>
+                
+					   				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>3</td>
+                <td>8</td>
+                <td>33</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-green" style="color:white;">Selesai</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>1.5                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Memberi Kuliah" hash_item="691b13b56f2971f52559be644afbb963" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Kimia Analitik I Kelas B</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                                <td>Semester Reguler</td>
+                
+					   				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>3</td>
+                <td>8</td>
+                <td>44</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>1.8                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Memberi Kuliah" hash_item="dc3d8f47f13a1744fcd094fe7c947276" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Kimia Analitik III Kelas C</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                                <td>Semester Reguler</td>
+                
+					   				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>3</td>
+                <td>8</td>
+                <td>36</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-green" style="color:white;">Selesai</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>1.5                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Memberi Kuliah" hash_item="5c16b6803bc92bbd3531c84f8f72d80c" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Teknik Pemisahan Membran Kelas Kim S-1</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                                <td>Semester Reguler</td>
+                
+					   				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>2</td>
+                <td>16</td>
+                <td>5</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>2                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Memberi Kuliah" hash_item="4422fdea7a74ec5bfbad5b8cffae157a" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_1_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_1_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A1.</strong> Praktikum/Responsi          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">1.8</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_2_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_2_length"><label><select name="DataTables_Table_2_length" aria-controls="DataTables_Table_2" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_2_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_2"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_2" role="grid" aria-describedby="DataTables_Table_2_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 87px;" aria-label="Jenis Perkuliahan: activate to sort column ascending">Jenis Perkuliahan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah SKS: activate to sort column ascending">Jumlah SKS</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Pertemuan: activate to sort column ascending">Jumlah Pertemuan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 52px;" aria-label="Jumlah Mhs: activate to sort column ascending">Jumlah Mhs</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 52px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Kimia Analitik II Kelas A</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>2</td>
+                <td>6</td>
+                <td>26</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.9                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Praktikum" hash_item="3b6db94b14e57d978938f50f9c7add40" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Kimia Analitik II Kelas B</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                				<td>Kelas Reguler</td>
+				                <td>S1</td>
+                <td>2</td>
+                <td>6</td>
+                <td>34</td>
+               
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.9                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Praktikum" hash_item="e02ac3785494540d39beb393da1a3b2d" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_2_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_2_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A1.</strong> Mengajar Program Khusus          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_3_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_3_length"><label><select name="DataTables_Table_3_length" aria-controls="DataTables_Table_3" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_3"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_3" role="grid" aria-describedby="DataTables_Table_3_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 82px;" aria-label="Jumlah Pertemuan: activate to sort column ascending">Jumlah Pertemuan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 56px;" aria-label="Jumlah Mhs: activate to sort column ascending">Jumlah Mhs</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 55px;" aria-label="Jumlah SKS: activate to sort column ascending">Jumlah SKS</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 80px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 56px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 72px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 46px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 28px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="12" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_3_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_3_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A1.5</strong> Memberi Materi Matrikulasi          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_4_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_4_length"><label><select name="DataTables_Table_4_length" aria-controls="DataTables_Table_4" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_4_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_4"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_4" role="grid" aria-describedby="DataTables_Table_4_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 98px;" aria-label="Jumlah Pertemuan: activate to sort column ascending">Jumlah Pertemuan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 65px;" aria-label="Jumlah Mhs: activate to sort column ascending">Jumlah Mhs</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 92px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 68px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 87px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 59px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 28px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="11" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_4_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_4_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A3.2</strong> Membimbing PKL/KP/PU/Prakerin/PBL/Plant Survey/KKI          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">1.2</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_5_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_5_length"><label><select name="DataTables_Table_5_length" aria-controls="DataTables_Table_5" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_5_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_5"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_5" role="grid" aria-describedby="DataTables_Table_5_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 77px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 302px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Membimbing PKL an Dela Ananda Putri 1717011045</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1e0pS84HJ_7E8_1tNXZrX6HOiMC72n-xW                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.3                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Membimbing KP/PU" hash_item="16f021bc97206599753637150d33b4cd" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Membimbing PKL an Lola Erdianes 1717011026</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1271_oRKQvzhWbHpZPVsn_KjI7LSeiI6g                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.3                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Membimbing KP/PU" hash_item="51f4112c9dc85de5c02f5547f8dda8b0" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Membimbing PKL an Nelda Rosa Oktarida 1717011088</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1p-AU0LV0Gj8HWYn2Lum4haCMSeafRJo4                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.3                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Membimbing KP/PU" hash_item="e7e5ecd3a8301df962a3954be16e0e1d" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Membimbing PKL an Sangaji Ilham Prasetyo 1717011054</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1fJsMafJ9a1_jmNChpTsPRkTfgMnvOdh9                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.3                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Membimbing KP/PU" hash_item="f3577bbabfdbcd975155e44b69f500cb" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_5_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_5_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A4.</strong> Membimbing Tugas Akhir/Skripsi/Thesis/Disertasi          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">1.3</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_6_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_6_length"><label><select name="DataTables_Table_6_length" aria-controls="DataTables_Table_6" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_6_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_6"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_6" role="grid" aria-describedby="DataTables_Table_6_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 74px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 74px;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 289px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Pembimbing 1  a. n. Fitri Sunarsih 1517011138
+</td>
+
+              
+              
+
+              
+              
+              
+				
+                              <td>S1</td>
+                <td>Pembimbing I</td>
+                <td>1</td>
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1Upju_Mjuoq-1ZzSulppgrZs0KA3976KI                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.5                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Bimbingan Skripsi" hash_item="7ddcc58c081c2bbd60dc0c656d5641be" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Pembimbing 2  a. n. Muhammad Arqam 1417011118
+
+</td>
+
+              
+              
+
+              
+              
+              
+				
+                              <td>S1</td>
+                <td>Pembimbing II</td>
+                <td>1</td>
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1KPuvNjai6NtBPFtf5oxOEAR5y6J2_Lro                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.4                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Bimbingan Skripsi" hash_item="f1ae1e04c40bbbd893efc635025e7ef2" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Pembimbing 2 a.n. Muhammad Arqam 1417011118
+</td>
+
+              
+              
+
+              
+              
+              
+				
+                              <td>S1</td>
+                <td>Pembimbing II</td>
+                <td>1</td>
+              
+
+
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.4                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Bimbingan Skripsi" hash_item="08e4bf2ac63c4d92d25235f0cbde3305" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_6_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_6_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A5.</strong> Seminar Mahasiswa          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0.6</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_7_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_7_length"><label><select name="DataTables_Table_7_length" aria-controls="DataTables_Table_7" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_7_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_7"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_7" role="grid" aria-describedby="DataTables_Table_7_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 74px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 76px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 80px;" aria-label="Jumlah Pembimbing: activate to sort column ascending">Jumlah Pembimbing</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 76px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 310px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 67px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 41px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_7" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+                             
+
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Pembahas Seminar Hasil mahasiswa a.n Nova Tri Irianti</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+                              <td>S2</td>
+                <td>1</td>
+                <td>2</td>
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=101SmeAAOUMiI0-kY_buYwbvgVnGSqInS                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.2                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Seminar Mahasiswa" hash_item="7bd78335a83972788679bff0cb70bc7b" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Pembahas Seminar Usul mahasiswa a.n Anisa Safitri
+</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+                              <td>S1</td>
+                <td>1</td>
+                <td>2</td>
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1WD4fFpcqhR6MVcko7wUVyPlcbPA5xH_Y
+                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Seminar Mahasiswa" hash_item="97ef6265b4c743b1220576eefcc84b05" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Pembahas Seminar Usul mahasiswa a.n Azizah Dewi Wahyu Ningrum
+</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+                              <td>S1</td>
+                <td>1</td>
+                <td>2</td>
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=1zcTPWzidaTLIExH5uuEOVBJ-_1AmM9xd
+                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Seminar Mahasiswa" hash_item="0c675ed2f628188d2cd832f2576229c7" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Pembimbing II Seminar Usul mahasiswa a.n Reza Baihaqi
+</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+                              <td>S1</td>
+                <td>1</td>
+                <td>2</td>
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Seminar Mahasiswa" hash_item="39a3496eec5841d1899d0d70b585bc7e" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Pembimbing II Seminar Usul mahasiswa a.n Tiara Eka Novrianti
+</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+                              <td>S1</td>
+                <td>1</td>
+                <td>2</td>
+              
+                            				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                  https://drive.google.com/open?id=12SxYi5ppFkwrDPfIRU5M5Laz63CHelUI
+                 
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Seminar Mahasiswa" hash_item="b6163ebdcbf7c97d1ef40564c62f4aea" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_7_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_7_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.</strong> Sidang Komisi          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_8_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_8_length"><label><select name="DataTables_Table_8_length" aria-controls="DataTables_Table_8" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_8_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_8"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_8" role="grid" aria-describedby="DataTables_Table_8_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 93px;" aria-label="Status Sidang: activate to sort column ascending">Status Sidang</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 47px;" aria-label="Strata: activate to sort column ascending">Strata</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 113px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 89px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 113px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 82px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_8" rowspan="1" colspan="1" style="width: 28px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="10" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_8_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_8_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.1</strong> Menguji PKL/KP/PU/Prakerin/PPL Kependidikan          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_9_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_9_length"><label><select name="DataTables_Table_9_length" aria-controls="DataTables_Table_9" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_9_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_9"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_9" role="grid" aria-describedby="DataTables_Table_9_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 47px;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 119px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 107px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 83px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 105px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 76px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_9" rowspan="1" colspan="1" style="width: 28px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="10" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_9_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_9_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.2</strong> Menguji PKL/KP/PU/Prakerin/PPL Non Kependidikan          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0.4</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_10_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_10_length"><label><select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_10_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_10"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 166px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 98px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 92px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 68px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 87px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 59px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Menguji PKL an Dela Ananda Putri 1717011045</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji PKL Non Dik" hash_item="0565fad9fb7a8601eb95bbcb46df9260" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Menguji PKL an Lola Erdianes 1717011026</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji PKL Non Dik" hash_item="567e9e481c00688a0dd84c4c9ce563aa" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="odd">
+                <td class="sorting_1">Menguji PKL an Nelda Rosa Oktarida 1717011088</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji PKL Non Dik" hash_item="084be0805cce71dacee3258d2a70fc00" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Menguji PKL an Sangaji Ilham Prasetyo 1717011054</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-indigo" style="color:white;">Beban Lebih</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.1                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji PKL Non Dik" hash_item="7eda97904e6be018e7e729d65f3a6a1b" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_10_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_10_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.3</strong> Menguji Tugas Akhir/Skripsi/Komprehensif S1          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0.13</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_11_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_11_length"><label><select name="DataTables_Table_11_length" aria-controls="DataTables_Table_11" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_11_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_11"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_11" role="grid" aria-describedby="DataTables_Table_11_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 171px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 97px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 91px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 67px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 89px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 85px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 58px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 82px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_11" rowspan="1" colspan="1" style="width: 81px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+                             
+
+                             
+
+              
+          <tr role="row" class="odd">
+                <td class="sorting_1">Penguji Skripsi a.n. Muhammad Arqam NPM 1417011118
+</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-green" style="color:white;">Selesai</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.065                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji Tugas Akhir/Skripsi" hash_item="36aed6f78788aee25e33bd2fe3742460" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr><tr role="row" class="even">
+                <td class="sorting_1">Penguji Skripsi a.n.Fitri Sunarsih
+ NPM 1517011038</td>
+
+              
+              
+
+              
+              
+              
+				
+              
+
+
+              
+                                            <td>1</td>
+              				
+								
+								
+								
+			  			  
+			  			  
+			  			  
+			  				
+			  				
+							  
+			  				
+								
+							  
+			  			  
+			  			  
+			  				
+								  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  					
+				  				  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  				  
+				  					
+										
+									  
+				  				  
+				  				  
+				  				  
+				  					
+				  				  
+				  				  
+				  					
+									  
+				  				  
+				  				  
+				  					
+                
+
+                <td>
+                                  </td>
+                <td>
+                                   
+                </td>
+                                <td class="bg-green" style="color:white;">Selesai</td>
+                                  <td class="bg-green">
+                    <div style="color:white;">
+                      Terima                    </div>
+                        
+                  </td>
+				                    <td>0.065                  </td>
+				                  <td class="" style="color:white;"></td>
+				                <td>
+                <div jenis_swmp="Menguji Tugas Akhir/Skripsi" hash_item="0176e5edd17d75d35c02dbef22187e9d" class="btn-view-kinerja btn btn-info btn-sm">Lihat Detail</div>
+                </td>
+				
+             
+              </tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_11_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_11_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="active"><a href="#">1</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.4</strong> Menguji Tesis          </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_12_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_12_length"><label><select name="DataTables_Table_12_length" aria-controls="DataTables_Table_12" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_12_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_12"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_12" role="grid" aria-describedby="DataTables_Table_12_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 84px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 142px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 113px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 110px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 143px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 106px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 102px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_12" rowspan="1" colspan="1" style="width: 41px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="8" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_12_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_12_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+  <div class="row">
+    <div class="tile">
+     <div class="t-header th-alt bg-bluegray">
+      <div class="th-title" style="font-size: 16px">
+        <div class="row">
+          <div class="col-md-6">
+            <strong class="bg-orange" style="color:#fff;padding:5px;border-radius:3px">A6.5</strong> Menguji Kelayakan Disertasi/Prakualifikasi/Ujian Disertasi Tertutup/Terbuka           </div>
+          <div class="col-md-2">
+            SKS : <strong class="bg-green" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+            SKSR : <strong class="bg-indigo" style="padding: 5px;">0</strong>          </div>
+          <div class="col-md-2 ">
+                    </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="t-body" style="padding: 10px">
+      <div class="row">
+        <div class="col-md-12">
+         <div id="DataTables_Table_13_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row-fluid"><div class="span6"><div class="dataTables_length" id="DataTables_Table_13_length"><label><select name="DataTables_Table_13_length" aria-controls="DataTables_Table_13" class=""><option value="50" selected="selected">50</option><option value="100">100</option></select> records per page</label></div></div><div class="span6"><div id="DataTables_Table_13_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="DataTables_Table_13"></label></div></div></div><table class="wb-table table table-striped table-bordered table_data dataTable no-footer" "="" style="font-size: 13px;" id="DataTables_Table_13" role="grid" aria-describedby="DataTables_Table_13_info" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 66px;" aria-sort="ascending" aria-label="Deskripsi: activate to sort column descending">Deskripsi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 134px;" aria-label="Jumlah Mahasiswa: activate to sort column ascending">Jumlah Mahasiswa</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 118px;" aria-label="Bukti Penugasan: activate to sort column ascending">Bukti Penugasan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 94px;" aria-label="Bukti Kinerja: activate to sort column ascending">Bukti Kinerja</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 90px;" aria-label="Rekomendasi: activate to sort column ascending">Rekomendasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 119px;" aria-label="Status Verifikasi: activate to sort column ascending">Status Verifikasi</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 88px;" aria-label="Beban Tugas: activate to sort column ascending">Beban Tugas</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 84px;" aria-label="Keterangan: activate to sort column ascending">Keterangan</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_13" rowspan="1" colspan="1" style="width: 29px;" aria-label="Aksi: activate to sort column ascending">Aksi</th></tr>
+            </thead>
+            <tbody>
+              
+          <tr class="odd"><td colspan="9" class="dataTables_empty" valign="top">No data available in table</td></tr></tbody>
+        </table><div class="row-fluid"><div class="span6"><div class="dataTables_info" id="DataTables_Table_13_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="span6"><div class="dataTables_paginate paging_bootstrap pagination" id="DataTables_Table_13_paginate"><ul><li class="prev disabled"><a href="#">← Previous</a></li><li class="next disabled"><a href="#">Next → </a></li></ul></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+
+</div>
+
+<div class="modal fade" id="modal-update-kinerja" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="zmdi zmdi-close-circle zmdi zmdi-hc-2x"></i></button>
+        <div class="row">
+          <h4 class="modal-title col-md-4" id="myModalLabel">Update</h4>
+          <div id="update-modal-loading-bar" class="bg-warning modal-title col-md-3">loading..</div>          
+        </div>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-update-rekomendasi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="zmdi zmdi-close-circle zmdi zmdi-hc-2x"></i></button>
+        <h4 class="modal-title" id="myModalLabel">Update Rekomendasi</h4>
+    </div>
+    <div class="modal-body">
+        <div class="tile">                    
+            <form id="modal_form-update_rekomendasi" class="form-horizontal" role="form" method="POST" action="https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/do_update_rekomendasi">                        
+                <div class="t-body tb-padding">
+                    <input type="hidden" name="id_swmp" value="">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Rekomendasi</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="rekomendasi">
+                            <option value="0" selected="selected">Belum Memilih</option><option value="1">Selesai</option><option value="2">Lanjutkan</option><option value="3">Gagal</option><option value="4">Lainnya</option><option value="5">Beban Lebih</option>                        </select>
+                        </div>
+                    </div>                    
+                    
+                </div>
+            </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="btn-update_rekomendasi" class="btn btn-success">Update</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+</div>
+</div>
+</div>
+</div>
+<p class="footer">Content rendered in <strong>3.9996</strong> seconds</p>
+                
+
+
+<script type="text/javascript" src="Manajemen%20BKD%20V2_files/jquery_003.js"></script>
+<script type="text/javascript" src="Manajemen%20BKD%20V2_files/DT_bootstrap.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function(){
+    add_update_rekomendasi_modal("#modal-update-rekomendasi", ".btn-update-rekomendasi");   
+    add_tambah_kinerja_modal("#modal-update-kinerja", ".btn-tambah-kinerja");   
+    add_update_kinerja_modal("#modal-update-kinerja", ".btn-update-kinerja");   
+    add_lihat_kinerja_modal("#modal-update-kinerja", ".btn-view-kinerja");   
+    add_lihat_kinerja_modal_insentif("#modal-update-kinerja", ".btn-view-kinerja-insentif");   
+    add_btn_show_komentar_all_listener();
+
+    setTimeout(function(){
+      $(".wb-table").each(function(i, obj){
+        $(obj).DataTable( {
+          "lengthMenu": [[50, 100], [50, 100]]
+        } );
+      });  
+    }, 300);
+ });
+
+
+  function add_update_kinerja_modal(id_modal_target, btn_add_kinerja_class){
+      $(btn_add_kinerja_class).each(function(i, obj){
+        $(obj).click(function(){
+          var url = "https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/modal_update_kinerja";
+           $(id_modal_target+" h4").text("Update Kinerja");
+           $("#update-modal-loading-bar").show();
+           $( id_modal_target+" .modal-body" ).html("");
+           $( id_modal_target+" .modal-body" ).first().load( url, {hash_item:$(obj).attr('hash_item'), jenis_swmp:$(obj).attr('jenis_swmp')},function( response, status, xhr ) {
+                $("#update-modal-loading-bar").fadeOut(500);    
+                $(id_modal_target+" form").first().attr("action", "https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/do_update_kinerja");            
+                if ( status == "error" ) {
+                  log("404 Error");
+                }
+              });
+            $(id_modal_target).modal('show');
+        })
+      });
+   }
+
+  function add_lihat_kinerja_modal(id_modal_target, btn_add_kinerja_class){
+      $(btn_add_kinerja_class).each(function(i, obj){
+        $(obj).click(function(){
+          var url = "https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/modal_update_kinerja";
+           $( id_modal_target+" .modal-body" ).html("");
+           $(id_modal_target+" h4").text("Tambah Kinerja");
+           $("#update-modal-loading-bar").show();
+           $( id_modal_target+" .modal-body" ).first().load( url, {hash_item:$(obj).attr('hash_item'), jenis_swmp:$(obj).attr('jenis_swmp')},function( response, status, xhr ) {
+                $("#update-modal-loading-bar").delay(500).fadeOut(500);    
+                $( id_modal_target+" input").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" select").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" textarea").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).attr("rows", "3");
+                  $(obj).removeAttr("name");
+                });
+
+                 // hide file
+                 $( id_modal_target+" input[type=file]").each(function(i, obj){
+                  $(obj).hide();
+                });
+                 $( id_modal_target+" .wb_info").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 // hide file
+                 $( id_modal_target+" .btn").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 $( id_modal_target+" form").first().removeAttr('action');
+                $( id_modal_target+" input").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" select").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" textarea").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).attr("rows", "3");
+                  $(obj).removeAttr("name");
+                });
+
+                 // hide file
+                 $( id_modal_target+" input[type=file]").each(function(i, obj){
+                  $(obj).hide();
+                });
+                 $( id_modal_target+" .wb_info").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 // hide file
+                 $( id_modal_target+" .btn").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 $( id_modal_target+" form").first().removeAttr('action');
+
+                if ( status == "error" ) {
+                  log("404 Error");
+                }
+              });
+            $(id_modal_target).modal('show');
+        })
+      });
+   }
+   
+   function add_lihat_kinerja_modal_insentif(id_modal_target, btn_add_kinerja_class){
+      $(btn_add_kinerja_class).each(function(i, obj){
+        $(obj).click(function(){
+          var url = "https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/modal_update_kinerja_insentif";
+           $( id_modal_target+" .modal-body" ).html("");
+           $(id_modal_target+" h4").text("Tambah Kinerja");
+           $("#update-modal-loading-bar").show();
+           $( id_modal_target+" .modal-body" ).first().load( url, {hash_item:$(obj).attr('hash_item'), jenis_swmp:$(obj).attr('jenis_swmp')},function( response, status, xhr ) {
+                $("#update-modal-loading-bar").delay(500).fadeOut(500);    
+                $( id_modal_target+" input").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" select").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" textarea").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).attr("rows", "3");
+                  $(obj).removeAttr("name");
+                });
+
+                 // hide file
+                 $( id_modal_target+" input[type=file]").each(function(i, obj){
+                  $(obj).hide();
+                });
+                 $( id_modal_target+" .wb_info").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 // hide file
+                 $( id_modal_target+" .btn").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 $( id_modal_target+" form").first().removeAttr('action');
+                $( id_modal_target+" input").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" select").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).removeAttr("name");
+                });
+                $( id_modal_target+" textarea").each(function(i, obj){
+                  $(obj).attr("readonly", "true");
+                  $(obj).attr("rows", "3");
+                  $(obj).removeAttr("name");
+                });
+
+                 // hide file
+                 $( id_modal_target+" input[type=file]").each(function(i, obj){
+                  $(obj).hide();
+                });
+                 $( id_modal_target+" .wb_info").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 // hide file
+                 $( id_modal_target+" .btn").each(function(i, obj){
+                  $(obj).hide();
+                });
+
+                 $( id_modal_target+" form").first().removeAttr('action');
+
+                if ( status == "error" ) {
+                  log("404 Error");
+                }
+              });
+            $(id_modal_target).modal('show');
+        })
+      });
+   }
+
+     function add_tambah_kinerja_modal(id_modal_target, btn_add_kinerja_class){
+      $(btn_add_kinerja_class).each(function(i, obj){
+        $(obj).click(function(){
+          var url = "https://remunerasidosen.unila.ac.id/manajemen/index.php/api_kinerja/modal_tambah_kinerja";
+           $(id_modal_target+" h4").text("Tambah Kinerja");
+           $("#update-modal-loading-bar").show();
+           $( id_modal_target+" .modal-body" ).html("");
+           $( id_modal_target+" .modal-body" ).first().load( url, {tahun:"2020", semester:"4", hash:$(obj).attr('hash'), jenis_swmp:$(obj).attr('jenis_swmp')},function( response, status, xhr ) {
+                $("#update-modal-loading-bar").fadeOut(500);                
+                if ( status == "error" ) {
+                  log("404 Error");
+                }
+              });
+            $(id_modal_target).modal('show');
+        })
+      });
+   }
+
+
+  function add_btn_post_komentar_listener(){
+    $("#btn-kirim_status_verifikasi").click(function(){
+      var data = $("#modal-update-status_verifikasi form").first().serialize();
+      send_post_request_reload_all($("#modal-update-status_verifikasi form").first().attr("action"), data);
+    });
+    $( ".wb_ajax-btn_post_komentar" ).each(function(i, obj){
+      var url_target = $(obj).attr('href');
+      $(obj).click(function(){
+        $("#modal-update-status_verifikasi form").first().attr("action", $(obj).attr("href"));
+        $("#modal-update-status_verifikasi").modal('show');
+      });
+    });
+  } 
+   function add_update_rekomendasi_modal(id_modal_target, class_btn_update){
+      
+      $("#btn-update_rekomendasi").click(function(){
+        send_form_request("#modal_form-update_rekomendasi");
+      });
+
+      $(class_btn_update).each(function(i, obj){
+        $(obj).click(function(){
+           $("#modal_form-update_rekomendasi input").first().val($(obj).attr('id_item'));
+           $("#modal_form-update_rekomendasi select").first().val($(obj).attr('rekomendasi'));
+           if(parseInt($(obj).attr('non-remun')) == 1){
+            // $("#modal_form-update_rekomendasi select option").last().hide();
+			$("#modal_form-update_rekomendasi option[value=" + 3 + "]").hide();
+			$("#modal_form-update_rekomendasi option[value=" + 4 + "]").hide();
+			$("#modal_form-update_rekomendasi option[value=" + 5 + "]").hide();
+           }else{
+            // $("#modal_form-update_rekomendasi select option").last().show();
+			$("#modal_form-update_rekomendasi option[value=" + 3 + "]").show();
+			$("#modal_form-update_rekomendasi option[value=" + 4 + "]").show();
+			$("#modal_form-update_rekomendasi option[value=" + 5 + "]").show();
+           }
+           $(id_modal_target).modal('show');
+        })
+      });
+   }
+
+
+
+
+</script></section>
+        
+        <!--| FOOTER |-->
+        
+        <footer id="footer" class="bg-bluegray" style="color: white">
+            Copyright © 2017 WCH, Sistem Manajemen BKD Unila.
+        </footer>
+
+<div class="modal fade" id="modal_ubah_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="zmdi zmdi-close-circle zmdi zmdi-hc-2x"></i></button>
+        <h4 class="modal-title" id="myModalLabel">Ubah Password</h4>
+    </div>
+    <div class="modal-body">
+        <div class="tile">                    
+            <form id="modal_form-ubah_password" class="form-horizontal" role="form" method="POST" action="https://remunerasidosen.unila.ac.id/index.php/home/do_ubah_password">                        
+                <div class="t-body tb-padding">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Password Lama</label>
+                        <div class="col-sm-10">
+                            <input required="" type="password" class="form-control" name="old_password">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Password Baru</label>
+                        <div class="col-sm-10">
+                            <input required="" type="password" id="pw_1" class="form-control" name="new_password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Ulangi Password Baru</label>
+                        <div class="col-sm-10">
+                            <input type="password" id="pw_2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div id="status_ubah_password" class="col-sm-10" style="color: white;">
+                            
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="btn-ubah_password" class="btn btn-success">Simpan</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="edit_fakultas-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<script type="text/javascript">
+    $("#btn-ubah_password").click(function(){
+        send_form_request("#modal_form-ubah_password");
+    });
+    $("#btn-show_modal_ubah_password").click(function(){
+      $("#modal_ubah_password").modal('show');  
+    })
+    $("#pw_1").keyup(function(){
+        onKeyup();
+    });
+    $("#pw_2").keyup(function(){
+        onKeyup();
+    });
+
+    function onKeyup(){
+        if($("#pw_1").val() != $("#pw_2").val()){
+            $("#pw_1").parent().addClass('has-error');
+            $("#pw_2").parent().addClass('has-error');
+            $("#status_ubah_password").addClass('bg-red');
+            $("#status_ubah_password").removeClass('bg-green');
+            $("#status_ubah_password").text("Password Baru Tidak Sesuai");
+            $("#btn-ubah_password").attr("disabled","true");
+        }else{
+            $("#pw_1").parent().removeClass('has-error');
+            $("#pw_2").parent().removeClass('has-error');            
+            $("#status_ubah_password").addClass('bg-green');
+            $("#status_ubah_password").removeClass('bg-red');
+            $("#status_ubah_password").text("Password Baru Sesuai");
+            $("#btn-ubah_password").removeAttr("disabled");
+        }
+
+    }
+
+
+
+</script>        
+    
+
+        <script type="text/javascript">   
+        $("#loading-content-wrapper").hide();
+        $("#progress-status").hide();
+            $(document).ready(function(){
+                document.body.style.zoom = "100%";
+                reload_content();
+                setTimeout(function(){
+                    $("#loading-full-wrapper").fadeOut(500);
+                    setTimeout(function(){
+                        notify('top', 'right', '', 'inverse', 'animated fadeIn', 'animated fadeOut', 'Selamat Datang di Sistem Manajemen BKD V2, ');
+                        setTimeout(sync_ask("https://remunerasidosen.unila.ac.id/index.php/c_helpdesk/do_sync_ask"), 7000);
+                        show_message_pejabat();
+                    },700);
+                },1000);
+            });
+
+
+    function show_message_pejabat(){
+        log('no message!');    }
+
+
+
+
+
+    var old_ask_unread = 0;
+    function sync_ask(sync_pesan_url){
+        var interval = 5000;
+        $.ajax({
+          type: "POST",
+          url: sync_pesan_url,
+          dataType: "json",
+          success: function(data) {
+                // log(data.unread);
+                if(data.unread > 0){
+                    $("#ask-status").show(800);                    
+                    $("#ask-status").text(data.unread+" pesan baru");
+                    if(old_ask_unread  < data.unread){
+                        old_ask_unread  = data.unread;
+                        notify('top', 'right', '', 'inverse', 'animated fadeIn', 'animated fadeOut', data.unread, ' Pesan Baru');                        
+                    }
+                }else{
+                    $("#ask-status").hide(800);                    
+                }
+                setTimeout(function(){
+                    // sync_ask(sync_pesan_url);
+                }, interval);
+            },
+            error: function(data) {
+                log(data.responseText);
+                setTimeout(function(){
+                    // sync_ask(sync_pesan_url);
+                }, interval);
+                
+            }
+        });
+
+    }
+
+
+
+        </script>
+
+
+</body></html>
